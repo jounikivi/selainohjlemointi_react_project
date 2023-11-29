@@ -10,7 +10,7 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>Notes App</h1>
+      <h1>Muistiinpanosovellus</h1>
       <NoteForm addNote={addNote} />
       <NoteList notes={notes} />
     </div>
