@@ -1,11 +1,10 @@
 // App.js
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NoteList from '/components/NoteList';
-import NoteForm from './components/NoteForm';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import NoteList from './NoteList';
+import NoteForm from './NoteForm';   
 
 const App = () => {
-  
   const [notes, setNotes] = useState([]);
 
   const addNote = (newNote) => {
