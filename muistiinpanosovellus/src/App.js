@@ -1,8 +1,9 @@
 // App.js
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import NoteList from './NoteList';
-import NoteForm from './NoteForm';
+import NoteList from './components/NoteList';
+import NoteForm from './components/NoteForm';
+
 
 const App = () => {
   const [notes, setNotes] = useState([]);
