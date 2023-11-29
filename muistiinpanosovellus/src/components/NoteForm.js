@@ -1,16 +1,16 @@
+// NoteForm.js
 import React, { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const NoteForm = ({ addNote }) => {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
+  const [noteText, setNoteText] = useState('');
   const [category, setCategory] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title || !content || !category) return;
-    addNote({ title, content, category });
-    setTitle('');
-    setContent('');
+    if (noteText.trim() === '' || category.trim() === '') return;
+    addNote({ id: uuidv4(), text: noteText, category });
+    setNoteText('');
     setCategory('');
   };
 
@@ -18,22 +18,17 @@ const NoteForm = ({ addNote }) => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Lisää muistiinpano..."
+        value={noteText}
+        onChange={(e) => setNoteText(e.target.value)}
       />
-      <textarea
-        placeholder="Content"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-      ></textarea>
       <input
         type="text"
-        placeholder="Category"
+        placeholder="Kategoria..."
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       />
-      <button type="submit">Add Note</button>
+      <button type="submit">Lisää muistiinpano</button>
     </form>
   );
 };

@@ -1,11 +1,12 @@
+// Note.js
 import React from 'react';
 
-const Note = ({ otsikko, muistiinpano, kategoria }) => {
+const Note = ({ note, deleteNote }) => {
   return (
-    <div className="note">
-      <h3>{otsikko}</h3>
-      <p>{muistiinpano}</p>
-      <p>Category: {kategoria}</p>
+    <div>
+      <p>{note.text}</p>
+      <p>Kategoria: {note.category}</p>
+      <button onClick={() => deleteNote(note.id)}>Delete</button>
     </div>
   );
 };
