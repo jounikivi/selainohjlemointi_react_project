@@ -6,6 +6,7 @@ import NoteForm from './components/NoteForm';
 
 
 const App = () => {
+  
   const [notes, setNotes] = useState([]);
 
   const addNote = (newNote) => {
