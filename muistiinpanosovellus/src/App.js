@@ -5,6 +5,7 @@ import NoteList from './NoteList';
 import NoteForm from './NoteForm';  
 
 const App = () => {
+  
   const [notes, setNotes] = useState([]);
 
   const addNote = (newNote) => {
