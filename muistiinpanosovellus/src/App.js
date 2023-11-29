@@ -1,6 +1,9 @@
+// App.js
 import React, { useState } from 'react';
-import NoteList from './components/NoteList';
-import NoteForm from './components/NoteForm';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import NoteList from './NoteList';
+import NoteForm from './NoteForm';   
+
 const App = () => {
   const [notes, setNotes] = useState([]);
 
@@ -8,13 +11,24 @@ const App = () => {
     setNotes([...notes, newNote]);
   };
 
+  const deleteNote = (noteId) => {
+    const updatedNotes = notes.filter((note) => note.id !== noteId);
+    setNotes(updatedNotes);
+  };
+
   return (
-    <div className="app">
-      <h1>Notes App</h1>
-      <NoteForm addNote={addNote} />
-      <NoteList notes={notes} />
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <NoteList notes={notes} deleteNote={deleteNote} />
+        </Route>
+        <Route path="/add">
+          <NoteForm addNote={addNote} />
+        </Route>
+      </Switch>
+    </Router>
   );
 };
 
 export default App;
+
