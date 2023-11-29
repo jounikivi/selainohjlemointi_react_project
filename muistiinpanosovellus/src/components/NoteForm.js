@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
 
 const NoteForm = ({ addNote }) => {
-  const [noteText, setNoteText] = useState('');
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
   const [category, setCategory] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (noteText.trim() === '' || category.trim() === '') return;
-    addNote({ id: uuidv4(), text: noteText, category });
-    setNoteText('');
+    if (!title || !content || !category) return;
+    addNote({ title, content, category });
+    setTitle('');
+    setContent('');
     setCategory('');
   };
 
@@ -17,13 +18,18 @@ const NoteForm = ({ addNote }) => {
     <form onSubmit={handleSubmit}>
       <input
         type="text"
-        placeholder="Add a note..."
-        value={noteText}
-        onChange={(e) => setNoteText(e.target.value)}
+        placeholder="Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
       />
+      <textarea
+        placeholder="Content"
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+      ></textarea>
       <input
         type="text"
-        placeholder="Category..."
+        placeholder="Category"
         value={category}
         onChange={(e) => setCategory(e.target.value)}
       />

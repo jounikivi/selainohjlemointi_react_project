@@ -1,11 +1,13 @@
 import React from 'react';
 
-const Note = ({ note, deleteNote }) => {
+const Note = ({ title, content, category }) => {
   return (
-    <div>
-      <p>{note.text}</p>
-      <p>Category: {note.category}</p>
-      <button onClick={() => deleteNote(note.id)}>Delete</button>
+    <div className="note">
+      <h3>{title}</h3>
+      <p>{content}</p>
+      <p>Category: {category}</p>
     </div>
   );
 };
+
+export default Note;
