@@ -6,7 +6,7 @@ const Note = ({ note, deleteNote }) => {
     <div>
       <p>{note.text}</p>
       <p>Kategoria: {note.category}</p>
-      <button onClick={() => deleteNote(note.id)}>Delete</button>
+      <button onClick={() => deleteNote(note.id)}>Poista muistiinpano</button>
     </div>
   );
 };
