@@ -1,9 +1,8 @@
-import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Otsikko</h1>
+      <h1>Loren Ipmsum</h1>
     </div>
   );
 }
