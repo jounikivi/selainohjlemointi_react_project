@@ -10,6 +10,11 @@ const App = () => {
     setNotes([...notes, newNote]);
   };
 
+  const deleteNote = (id) => {
+    const updatedNotes = notes.filter((note) => note.id !== id);
+    setNotes(updatedNotes);
+  };
+
   return (
     <div className="container">
       <h1>Muistiinpanosovellus</h1>
@@ -18,7 +23,7 @@ const App = () => {
       </div>
       {notes.length > 0 && (
         <div className='note-list'>
-          <NoteList notes={notes} />
+          <NoteList notes={notes} deleteNote={deleteNote} />
         </div>
       )}
     </div>
