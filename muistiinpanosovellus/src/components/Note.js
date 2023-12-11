@@ -1,11 +1,14 @@
 // Note.js
 import React, { useState } from 'react';
 
+// Yksittäinen muistiinpano, joka sisältää muokkaus- ja poistotoiminnot
 const Note = ({ note, deleteNote, editNote }) => {
+  // Tilat muokkaustilan seurantaa varten
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(note.text);
   const [editedCategory, setEditedCategory] = useState(note.category);
 
+  // Muokkaustoiminnon käsittely
   const handleEdit = () => {
     editNote(note.id, editedText, editedCategory);
     setIsEditing(false);
@@ -14,6 +17,7 @@ const Note = ({ note, deleteNote, editNote }) => {
   return (
     <div>
       {isEditing ? (
+        // Näytetään muokkauslomake muokkaustilan ollessa päällä
         <div>
           <input
             type="text"
@@ -28,6 +32,7 @@ const Note = ({ note, deleteNote, editNote }) => {
           <button onClick={handleEdit}>Tallenna muutokset</button>
         </div>
       ) : (
+        // Näytetään muistiinpanon tiedot, kun muokkaustilaa ei ole
         <div>
           <p>{note.text}</p>
           <p>Kategoria: {note.category}</p>
