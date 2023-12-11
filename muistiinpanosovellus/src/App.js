@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
-import NoteList from './components/NoteList';
-import NoteForm from './components/NoteForm';
-import Note from './components/Note';
-import './App.css';
+import React, { useState } from "react";
+import NoteList from "./components/NoteList";
+import NoteForm from "./components/NoteForm";
+import Note from "./components/Note";
+import "./App.css";
 
 const App = () => {
   const [notes, setNotes] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
-  const [editedNote, setEditedNote] = useState({ id: '', text: '', category: '' });
+  const [editedNote, setEditedNote] = useState({
+    id: "",
+    text: "",
+    category: "",
+  });
 
   const addNote = (newNote) => {
     setNotes([...notes, newNote]);
@@ -44,7 +48,7 @@ const App = () => {
 
   const cancelEditing = () => {
     setIsEditing(false);
-    setEditedNote({ id: '', text: '', category: '' });
+    setEditedNote({ id: "", text: "", category: "" });
   };
 
   return (
@@ -62,14 +66,26 @@ const App = () => {
                   <input
                     type="text"
                     value={editedNote.text}
-                    onChange={(e) => setEditedNote({ ...editedNote, text: e.target.value })}
+                    onChange={(e) =>
+                      setEditedNote({ ...editedNote, text: e.target.value })
+                    }
                   />
                   <input
                     type="text"
                     value={editedNote.category}
-                    onChange={(e) => setEditedNote({ ...editedNote, category: e.target.value })}
+                    onChange={(e) =>
+                      setEditedNote({ ...editedNote, category: e.target.value })
+                    }
                   />
-                  <button onClick={() => editNote(editedNote.id, editedNote.text, editedNote.category)}>
+                  <button
+                    onClick={() =>
+                      editNote(
+                        editedNote.id,
+                        editedNote.text,
+                        editedNote.category
+                      )
+                    }
+                  >
                     Tallenna muutokset
                   </button>
                   <button onClick={cancelEditing}>Peruuta</button>
@@ -85,6 +101,8 @@ const App = () => {
           ))}
         </div>
       )}
+      <NoteList notes={notes} deleteNote={deleteNote} />{" "}
+      {/* Lisää NoteList tässä */}
     </div>
   );
 };
